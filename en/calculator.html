@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="color-scheme" content="light dark" />
+<meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)" />
+<meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)" />
+<meta name="apple-itunes-app" content="app-id=6815973549" />
+<title>Lease Mileage Calculator: Excess and Unused Mileage for PCH and PCP – Kilometerkompass</title>
+<meta name="description" content="Free calculator: are you above or below the mileage allowance on your car lease, and what will it mean at the end of the contract? With tolerance and forecast, in miles or kilometres." />
+<link rel="canonical" href="https://kilometerkompass.github.io/en/calculator.html" />
+<link rel="alternate" hreflang="de" href="https://kilometerkompass.github.io/rechner.html" />
+<link rel="alternate" hreflang="fr" href="https://kilometerkompass.github.io/fr/calculateur.html" />
+<link rel="alternate" hreflang="it" href="https://kilometerkompass.github.io/it/calcolatore.html" />
+<link rel="alternate" hreflang="es" href="https://kilometerkompass.github.io/es/calculadora.html" />
+<link rel="alternate" hreflang="en" href="https://kilometerkompass.github.io/en/calculator.html" />
+<link rel="alternate" hreflang="x-default" href="https://kilometerkompass.github.io/rechner.html" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="Kilometerkompass" />
+<meta property="og:locale" content="en_GB" />
+<meta property="og:title" content="Lease Mileage Calculator" />
+<meta property="og:description" content="Are you above or below your lease mileage allowance – and what will it mean at the end of the contract? Work it out for free, right in your browser." />
+<meta property="og:url" content="https://kilometerkompass.github.io/en/calculator.html" />
+<meta property="og:image" content="https://kilometerkompass.github.io/bilder/vorschau.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta name="twitter:card" content="summary_large_image" />
+<link rel="icon" type="image/png" href="../bilder/symbol.png" />
+<link rel="apple-touch-icon" href="../bilder/symbol.png" />
+<link rel="stylesheet" href="../stil.css" />
+<script src="../waehrung.js" defer></script>
+<script src="../rechner.js" defer></script>
+</head>
+<body class="textseite">
+
+<header class="kopfzeile">
+  <div class="spalte">
+    <a class="marke" href="index.html"><img class="symbol" src="../bilder/symbol.png" width="256" height="256" alt="" />Kilometerkompass</a>
+  </div>
+</header>
+
+<main class="artikel">
+  <div class="spalte">
+
+    <h1>Lease Mileage Calculator</h1>
+    <p class="vorspann">Are you above or below the mileage allowance on your PCH or PCP – and what will it mean in pounds or euros at the end of the contract? Enter the details from your contract and today’s odometer reading.</p>
+    <p class="stand">The calculator runs only in your browser. Nothing you enter is sent or stored.</p>
+
+    <noscript>
+      <p><strong>The calculator needs JavaScript.</strong> If it’s switched off, the section “How the calculator works” further down explains how to work it out yourself.</p>
+    </noscript>
+
+    <form class="rechner" id="rechner" autocomplete="off" novalidate>
+      <p id="rechner-js" hidden><button type="button" class="knopf-leise" id="beispiel">Try an Example</button>
+        <span class="wahlen"><label class="waehrungswahl">Currency <select id="waehrung"><option value="GBP">Pound Sterling (£)</option><option value="EUR">Euro (€)</option></select></label>
+        <label class="waehrungswahl">Distance <select id="entfernung"><option value="mi">Miles (mi)</option><option value="km">Kilometres (km)</option></select></label></span></p>
+
+      <fieldset>
+        <legend>Your Contract</legend>
+        <div class="felder">
+          <div class="feld">
+            <label for="beginn">Start of Contract</label>
+            <input type="date" id="beginn" name="beginn" required />
+          </div>
+          <div class="feld">
+            <label for="laufzeit">Term</label>
+            <div class="eingabe">
+              <input type="text" inputmode="numeric" id="laufzeit" name="laufzeit" placeholder="e.g. 36" required />
+              <span class="einheit">months</span>
+            </div>
+          </div>
+          <div class="feld">
+            <label for="vereinbart">Mileage Allowance, in Total</label>
+            <div class="eingabe">
+              <input type="text" inputmode="numeric" id="vereinbart" name="vereinbart" placeholder="e.g. 30,000" required />
+              <span class="einheit entfernung">mi</span>
+            </div>
+            <p class="feldhinweis">For the whole term, not per year.</p>
+          </div>
+          <div class="feld">
+            <label for="uebernahme">Odometer at Collection</label>
+            <div class="eingabe">
+              <input type="text" inputmode="numeric" id="uebernahme" name="uebernahme" placeholder="e.g. 10" />
+              <span class="einheit entfernung">mi</span>
+            </div>
+            <p class="feldhinweis">It’s on the delivery paperwork. Leave empty if the car was new.</p>
+          </div>
+          <div class="feld">
+            <label for="satzMehr">Excess Mileage Rate</label>
+            <div class="eingabe">
+              <span class="einheit waehrung">£</span>
+              <input type="text" inputmode="decimal" id="satzMehr" name="satzMehr" placeholder="e.g. 0.12" />
+              <span class="einheit" data-km="per km">per mile</span>
+            </div>
+            <p class="feldhinweis" data-eur="As in your contract: 12 cents is 0.12.">As in your contract: 12p is 0.12.</p>
+          </div>
+          <div class="feld">
+            <label for="satzMinder">Unused Mileage Rate</label>
+            <div class="eingabe">
+              <span class="einheit waehrung">£</span>
+              <input type="text" inputmode="decimal" id="satzMinder" name="satzMinder" placeholder="e.g. 0.07" />
+              <span class="einheit" data-km="per km">per mile</span>
+            </div>
+            <p class="feldhinweis">Leave empty if your contract doesn’t refund unused mileage.</p>
+          </div>
+          <div class="feld">
+            <label for="freigrenze">Tolerance</label>
+            <div class="eingabe">
+              <input type="text" inputmode="numeric" id="freigrenze" name="freigrenze" placeholder="e.g. 2,500" />
+              <span class="einheit entfernung">mi</span>
+            </div>
+            <p class="feldhinweis">Leave empty if your contract doesn’t have one.</p>
+          </div>
+        </div>
+      </fieldset>
+
+      <details class="weitere">
+        <summary>More Contract Details</summary>
+        <div class="felder">
+          <div class="feld">
+            <label for="freigrenzeMinder">Unused Mileage Tolerance</label>
+            <div class="eingabe">
+              <input type="text" inputmode="numeric" id="freigrenzeMinder" name="freigrenzeMinder" placeholder="same as above" />
+              <span class="einheit entfernung">mi</span>
+            </div>
+          </div>
+          <div class="feld">
+            <label for="freigrenzenart">Tolerance Rule</label>
+            <select id="freigrenzenart" name="freigrenzenart">
+              <option value="freibetrag">Only Mileage Beyond Tolerance</option>
+              <option value="grenzwert">All Mileage Once Exceeded</option>
+            </select>
+          </div>
+          <div class="feld">
+            <label for="deckelArt">Refund Cap</label>
+            <select id="deckelArt" name="deckelArt">
+              <option value="ohne">No Cap</option>
+              <option value="kilometer">Capped by Mileage</option>
+              <option value="betrag">Capped by Amount</option>
+            </select>
+          </div>
+          <div class="feld" id="feld-deckel-km" hidden>
+            <label for="deckelKilometer">Maximum Mileage</label>
+            <div class="eingabe">
+              <input type="text" inputmode="numeric" id="deckelKilometer" name="deckelKilometer" placeholder="e.g. 5,000" />
+              <span class="einheit entfernung">mi</span>
+            </div>
+          </div>
+          <div class="feld" id="feld-deckel-betrag" hidden>
+            <label for="deckelBetrag">Maximum Refund</label>
+            <div class="eingabe">
+              <span class="einheit waehrung">£</span>
+              <input type="text" inputmode="decimal" id="deckelBetrag" name="deckelBetrag" placeholder="e.g. 500" />
+            </div>
+          </div>
+        </div>
+      </details>
+
+      <fieldset>
+        <legend>Your Reading</legend>
+        <div class="felder">
+          <div class="feld">
+            <label for="stand">Odometer Reading</label>
+            <div class="eingabe">
+              <input type="text" inputmode="numeric" id="stand" name="stand" placeholder="e.g. 13,000" required />
+              <span class="einheit entfernung">mi</span>
+            </div>
+            <p class="feldhinweis">The total on the odometer, not the trip counter.</p>
+          </div>
+          <div class="feld">
+            <label for="stichtag">Reading Date</label>
+            <input type="date" id="stichtag" name="stichtag" required />
+          </div>
+          <div class="feld">
+            <label for="methode">Forecast</label>
+            <select id="methode" name="methode">
+              <option value="schnitt">Average Since Start of Contract</option>
+              <option value="annahme">Your Own Annual Estimate</option>
+            </select>
+          </div>
+          <div class="feld" id="feld-jahresleistung" hidden>
+            <label for="jahresleistung">Expected Annual Mileage</label>
+            <div class="eingabe">
+              <input type="text" inputmode="numeric" id="jahresleistung" name="jahresleistung" placeholder="e.g. 10,000" />
+              <span class="einheit entfernung">mi</span>
+            </div>
+          </div>
+        </div>
+      </fieldset>
+
+      <section class="ergebnis" id="ergebnis" aria-live="polite">
+        <h2>Result</h2>
+        <p class="rechenweg">Enter the start of contract, term, mileage allowance and today’s odometer reading – the result appears straight away.</p>
+      </section>
+    </form>
+
+    <aside class="appkasten" aria-label="Kilometerkompass">
+      <img class="symbol" src="../bilder/symbol.png" width="256" height="256" alt="" />
+      <div>
+        <p class="appkasten-titel">Want to know every month without doing the maths?</p>
+        <p>Kilometerkompass for iPhone works this out for you at any time – from every odometer reading you log, with the average of recent weeks, a reminder for your next reading and reading the odometer with the camera. Try it free for seven days, then it’s a one-off <span data-eur="€4.99">£3.99</span>, with no subscription.</p>
+        <p class="laden">
+          <a class="app-store" href="https://apps.apple.com/gb/app/kilometerkompass/id6815973549" data-eur-href="https://apps.apple.com/ie/app/kilometerkompass/id6815973549">
+            <picture>
+              <source srcset="../bilder/app-store-weiss-en.svg" media="(prefers-color-scheme: dark)" />
+              <img src="../bilder/app-store-schwarz-en.svg" width="162" height="54" alt="Download on the App Store" />
+            </picture>
+          </a>
+        </p>
+        <p><a href="index.html">More about the app</a></p>
+      </div>
+    </aside>
+
+    <h2>How the calculator works</h2>
+    <h3>Your target to date</h3>
+    <p>Your mileage allowance is spread evenly over the calendar days of the term. With 30,000&#160;<span class="entfernung">mi</span> over 36&#160;months, you’re “allowed” around 10,000&#160;<span class="entfernung">mi</span> once a third of the term has passed. If you’re above that, you’re driving more than your contract allows for.</p>
+    <p>The term ends the day before the same day of the month it started: a 36-month contract starting on 1&#160;March 2025 ends on 29&#160;February 2028.</p>
+
+    <h3>The forecast</h3>
+    <p>From your daily average so far, the calculator works out where you’ll end up at the end of the contract. It needs at least 14&#160;days of the term for that – any earlier and the figure would be pure chance. If you want a figure sooner, or you know your driving is going to change, enter your own annual estimate.</p>
+    <p>With a single odometer reading, the calculator only knows your average since the start of the contract. The app keeps every reading and also works with the average of recent weeks, which shows sooner when you start driving more or less than before.</p>
+
+    <h3>Tolerance and settlement</h3>
+    <p>Nothing within the tolerance is charged or refunded. Beyond it, some contracts count only the mileage above the tolerance, others count all of it from the start – check which rule yours uses. Not every contract refunds unused mileage, and some that do cap the refund. You can set both under “More Contract Details”. If your contract states the excess mileage rate excluding VAT and VAT is added to the invoice, enter the rate including VAT.</p>
+
+    <h3>Miles or kilometres, pounds or euros</h3>
+    <p>The calculator doesn’t convert anything. Enter the figures as they appear in your contract and choose the matching currency and distance above the form – the result is shown in the same units.</p>
+
+    <h3>If you stop driving today</h3>
+    <p>This line shows the limit: an excess mileage charge can’t come out lower than this, and a refund can’t be any bigger.</p>
+
+    <p class="stand">All figures are for guidance only. What counts is always your contract and your leasing company’s settlement.</p>
+
+    <ul class="weiterlesen">
+      <li><a href="lease-return.html">Returning your lease car</a> – what to check before a PCH or PCP car goes back, with a checklist</li>
+    </ul>
+
+  </div>
+</main>
+
+<footer class="fusszeile">
+  <div class="spalte">
+    <nav aria-label="Pages">
+      <ul>
+        <li><a href="index.html">Kilometerkompass</a></li>
+        <li><a href="calculator.html" aria-current="page">Mileage Calculator</a></li>
+        <li><a href="lease-return.html">Lease Return Guide</a></li>
+      </ul>
+    </nav>
+    <nav aria-label="Legal information">
+      <ul>
+        <li><a href="press.html">Press</a></li>
+        <li><a href="privacy.html">Privacy</a></li>
+        <li><a href="legal-notice.html">Legal Notice</a></li>
+      </ul>
+    </nav>
+    <nav aria-label="Language">
+      <ul>
+        <li><a href="../rechner.html" hreflang="de" lang="de">Deutsch</a></li>
+        <li><a href="../fr/calculateur.html" hreflang="fr" lang="fr">Français</a></li>
+        <li><a href="../it/calcolatore.html" hreflang="it" lang="it">Italiano</a></li>
+        <li><a href="../es/calculadora.html" hreflang="es" lang="es">Español</a></li>
+      </ul>
+    </nav>
+    <p>Apple, the Apple logo, iPhone, iCloud, Face&#160;ID, Touch&#160;ID, Siri and App Store are trademarks of Apple Inc., registered in the U.S. and other countries and regions.</p>
+  </div>
+</footer>
+
+</body>
+</html>

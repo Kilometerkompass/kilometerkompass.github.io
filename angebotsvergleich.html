@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="color-scheme" content="light dark" />
+<meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)" />
+<meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)" />
+<meta name="apple-itunes-app" content="app-id=6815973549" />
+<title>Leasing-Angebote vergleichen: Welche Laufleistung passt? – Kilometerkompass</title>
+<meta name="description" content="Kostenloser Rechner: 10.000 oder 15.000 km im Jahr? Zwei Leasing-Angebote vergleichen – Raten, Anzahlung, Überführung und Wartung plus erwartete Nachzahlung oder Vergütung für deine Fahrleistung." />
+<link rel="canonical" href="https://kilometerkompass.github.io/angebotsvergleich.html" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="Kilometerkompass" />
+<meta property="og:locale" content="de_DE" />
+<meta property="og:title" content="Leasing-Angebote vergleichen: Welche Laufleistung passt?" />
+<meta property="og:description" content="Zwei Leasing-Angebote, eine Fahrleistung: Was kostet am Ende weniger – Raten plus Mehrkilometer oder die größere Laufleistung? Kostenlos ausrechnen, direkt im Browser." />
+<meta property="og:url" content="https://kilometerkompass.github.io/angebotsvergleich.html" />
+<meta property="og:image" content="https://kilometerkompass.github.io/bilder/vorschau.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta name="twitter:card" content="summary_large_image" />
+<link rel="icon" type="image/png" href="bilder/symbol.png" />
+<link rel="apple-touch-icon" href="bilder/symbol.png" />
+<link rel="stylesheet" href="stil.css" />
+<script src="waehrung.js" defer></script>
+<script src="angebotsvergleich.js" defer></script>
+</head>
+<body class="textseite">
+
+<header class="kopfzeile">
+  <div class="spalte">
+    <a class="marke" href="index.html"><img class="symbol" src="bilder/symbol.png" width="256" height="256" alt="" />Kilometerkompass</a>
+  </div>
+</header>
+
+<main class="artikel">
+  <div class="spalte">
+
+    <h1>Leasing-Angebote vergleichen</h1>
+    <p class="vorspann">Wie viele Kilometer im Jahr sollst du vereinbaren – und welches von zwei Angeboten kostet am Ende weniger? Trag deine Fahrleistung und die beiden Angebote ein. Der Rechner zählt zu Raten, Anzahlung, Überführung und Wartung, was die Kilometerabrechnung am Vertragsende voraussichtlich kostet oder bringt.</p>
+    <p class="stand">Der Rechner läuft nur in deinem Browser. Was du eingibst, wird weder übertragen noch gespeichert.</p>
+
+    <noscript>
+      <p><strong>Der Rechner braucht JavaScript.</strong> Ist es ausgeschaltet, erklärt dir der Abschnitt „So rechnet der Rechner“ weiter unten, wie du selbst rechnest.</p>
+    </noscript>
+
+    <form class="rechner" id="rechner" autocomplete="off" novalidate>
+      <p id="rechner-js" hidden><button type="button" class="knopf-leise" id="beispiel">Mit einem Beispiel ausprobieren</button>
+        <label class="waehrungswahl">Währung <select id="waehrung"><option value="EUR">Euro (€)</option><option value="CHF">Schweizer Franken (CHF)</option></select></label></p>
+
+      <fieldset>
+        <legend>Deine Fahrleistung</legend>
+        <div class="felder">
+          <div class="feld">
+            <label for="fahrleistung">Gefahren im Jahr</label>
+            <div class="eingabe">
+              <input type="text" inputmode="numeric" id="fahrleistung" name="fahrleistung" placeholder="z.&#160;B. 13.400" required />
+              <span class="einheit">km</span>
+            </div>
+            <p class="feldhinweis">Am besten aus deinem jetzigen Vertrag: gefahrene Kilometer geteilt durch die Monate, mal zwölf. Der <a href="rechner.html">Kilometer-Rechner</a> zeigt dir deinen Schnitt je Tag.</p>
+          </div>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>Angebot A</legend>
+        <div class="felder">
+          <div class="feld">
+            <label for="laufzeitA">Laufzeit</label>
+            <div class="eingabe">
+              <input type="text" inputmode="numeric" id="laufzeitA" name="laufzeitA" placeholder="z.&#160;B. 36" required />
+              <span class="einheit">Monate</span>
+            </div>
+          </div>
+          <div class="feld">
+            <label for="laufleistungA">Laufleistung im Jahr</label>
+            <div class="eingabe">
+              <input type="text" inputmode="numeric" id="laufleistungA" name="laufleistungA" placeholder="z.&#160;B. 10.000" required />
+              <span class="einheit">km</span>
+            </div>
+          </div>
+          <div class="feld">
+            <label for="rateA">Monatsrate</label>
+            <div class="eingabe">
+              <input type="text" inputmode="decimal" id="rateA" name="rateA" placeholder="z.&#160;B. 289" />
+              <span class="einheit waehrung">€</span>
+            </div>
+          </div>
+          <div class="feld">
+            <label for="anzahlungA">Anzahlung</label>
+            <div class="eingabe">
+              <input type="text" inputmode="decimal" id="anzahlungA" name="anzahlungA" placeholder="z.&#160;B. 1.000" />
+              <span class="einheit waehrung">€</span>
+            </div>
+          </div>
+          <div class="feld">
+            <label for="nebenkostenA">Überführung und Zulassung</label>
+            <div class="eingabe">
+              <input type="text" inputmode="decimal" id="nebenkostenA" name="nebenkostenA" placeholder="z.&#160;B. 990" />
+              <span class="einheit waehrung">€</span>
+            </div>
+          </div>
+          <div class="feld">
+            <label for="wartungA">Wartung</label>
+            <select id="wartungA" name="wartungA">
+              <option value="paket">Servicepaket je Monat</option>
+              <option value="einzeln">Inspektion einzeln</option>
+            </select>
+          </div>
+          <div class="feld" id="feld-paket-A">
+            <label for="servicepaketA">Servicepaket</label>
+            <div class="eingabe">
+              <input type="text" inputmode="decimal" id="servicepaketA" name="servicepaketA" placeholder="z.&#160;B. 29" />
+              <span class="einheit"><span class="waehrung">€</span> im Monat</span>
+            </div>
+          </div>
+          <div class="feld" id="feld-inspektion-A" hidden>
+            <label for="inspektionA">Je Inspektion</label>
+            <div class="eingabe">
+              <input type="text" inputmode="decimal" id="inspektionA" name="inspektionA" placeholder="z.&#160;B. 380" />
+              <span class="einheit waehrung">€</span>
+            </div>
+          </div>
+          <div class="feld" id="feld-abstand-A" hidden>
+            <label for="abstandA">Inspektion fällig</label>
+            <select id="abstandA" name="abstandA">
+              <option value="12">Jährlich</option>
+              <option value="24">Alle 2 Jahre</option>
+            </select>
+          </div>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>Angebot B</legend>
+        <div class="felder">
+          <div class="feld">
+            <label for="laufzeitB">Laufzeit</label>
+            <div class="eingabe">
+              <input type="text" inputmode="numeric" id="laufzeitB" name="laufzeitB" placeholder="z.&#160;B. 36" required />
+              <span class="einheit">Monate</span>
+            </div>
+          </div>
+          <div class="feld">
+            <label for="laufleistungB">Laufleistung im Jahr</label>
+            <div class="eingabe">
+              <input type="text" inputmode="numeric" id="laufleistungB" name="laufleistungB" placeholder="z.&#160;B. 15.000" required />
+              <span class="einheit">km</span>
+            </div>
+          </div>
+          <div class="feld">
+            <label for="rateB">Monatsrate</label>
+            <div class="eingabe">
+              <input type="text" inputmode="decimal" id="rateB" name="rateB" placeholder="z.&#160;B. 309" />
+              <span class="einheit waehrung">€</span>
+            </div>
+          </div>
+          <div class="feld">
+            <label for="anzahlungB">Anzahlung</label>
+            <div class="eingabe">
+              <input type="text" inputmode="decimal" id="anzahlungB" name="anzahlungB" placeholder="z.&#160;B. 1.500" />
+              <span class="einheit waehrung">€</span>
+            </div>
+          </div>
+          <div class="feld">
+            <label for="nebenkostenB">Überführung und Zulassung</label>
+            <div class="eingabe">
+              <input type="text" inputmode="decimal" id="nebenkostenB" name="nebenkostenB" placeholder="z.&#160;B. 890" />
+              <span class="einheit waehrung">€</span>
+            </div>
+          </div>
+          <div class="feld">
+            <label for="wartungB">Wartung</label>
+            <select id="wartungB" name="wartungB">
+              <option value="paket">Servicepaket je Monat</option>
+              <option value="einzeln">Inspektion einzeln</option>
+            </select>
+          </div>
+          <div class="feld" id="feld-paket-B">
+            <label for="servicepaketB">Servicepaket</label>
+            <div class="eingabe">
+              <input type="text" inputmode="decimal" id="servicepaketB" name="servicepaketB" placeholder="z.&#160;B. 29" />
+              <span class="einheit"><span class="waehrung">€</span> im Monat</span>
+            </div>
+          </div>
+          <div class="feld" id="feld-inspektion-B" hidden>
+            <label for="inspektionB">Je Inspektion</label>
+            <div class="eingabe">
+              <input type="text" inputmode="decimal" id="inspektionB" name="inspektionB" placeholder="z.&#160;B. 380" />
+              <span class="einheit waehrung">€</span>
+            </div>
+          </div>
+          <div class="feld" id="feld-abstand-B" hidden>
+            <label for="abstandB">Inspektion fällig</label>
+            <select id="abstandB" name="abstandB">
+              <option value="12">Jährlich</option>
+              <option value="24">Alle 2 Jahre</option>
+            </select>
+          </div>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>Abrechnung am Vertragsende</legend>
+        <div class="felder">
+          <div class="feld">
+            <label for="satzMehr">Je Mehrkilometer</label>
+            <div class="eingabe">
+              <input type="text" inputmode="decimal" id="satzMehr" name="satzMehr" placeholder="z.&#160;B. 0,12" />
+              <span class="einheit waehrung">€</span>
+            </div>
+          </div>
+          <div class="feld">
+            <label for="satzMinder">Je Minderkilometer</label>
+            <div class="eingabe">
+              <input type="text" inputmode="decimal" id="satzMinder" name="satzMinder" placeholder="z.&#160;B. 0,07" />
+              <span class="einheit waehrung">€</span>
+            </div>
+          </div>
+          <div class="feld">
+            <label for="freigrenze">Freigrenze</label>
+            <div class="eingabe">
+              <input type="text" inputmode="numeric" id="freigrenze" name="freigrenze" placeholder="z.&#160;B. 2.500" />
+              <span class="einheit">km</span>
+            </div>
+            <p class="feldhinweis">Gilt hier für beide Angebote. Leer lassen, wenn es keine gibt.</p>
+          </div>
+        </div>
+      </fieldset>
+
+      <details class="weitere">
+        <summary>Weitere Angaben aus dem Angebot</summary>
+        <div class="felder">
+          <div class="feld">
+            <label for="freigrenzeMinder">Eigene Freigrenze für Minderkilometer</label>
+            <div class="eingabe">
+              <input type="text" inputmode="numeric" id="freigrenzeMinder" name="freigrenzeMinder" placeholder="wie oben" />
+              <span class="einheit">km</span>
+            </div>
+          </div>
+          <div class="feld">
+            <label for="freigrenzenart">Über der Freigrenze abgerechnet</label>
+            <select id="freigrenzenart" name="freigrenzenart">
+              <option value="freibetrag">Nur die Kilometer darüber</option>
+              <option value="grenzwert">Alle Kilometer ab dem ersten</option>
+            </select>
+          </div>
+          <div class="feld">
+            <label for="deckelArt">Obergrenze der Vergütung</label>
+            <select id="deckelArt" name="deckelArt">
+              <option value="ohne">Keine</option>
+              <option value="kilometer">Höchstens so viele Kilometer</option>
+              <option value="betrag">Höchstens ein Betrag</option>
+            </select>
+          </div>
+          <div class="feld" id="feld-deckel-km" hidden>
+            <label for="deckelKilometer">Vergütet werden höchstens</label>
+            <div class="eingabe">
+              <input type="text" inputmode="numeric" id="deckelKilometer" name="deckelKilometer" placeholder="z.&#160;B. 5.000" />
+              <span class="einheit">km</span>
+            </div>
+          </div>
+          <div class="feld" id="feld-deckel-betrag" hidden>
+            <label for="deckelBetrag">Vergütet werden höchstens</label>
+            <div class="eingabe">
+              <input type="text" inputmode="decimal" id="deckelBetrag" name="deckelBetrag" placeholder="z.&#160;B. 500" />
+              <span class="einheit waehrung">€</span>
+            </div>
+          </div>
+        </div>
+      </details>
+
+      <section class="ergebnis" id="ergebnis" aria-live="polite">
+        <h2>Ergebnis</h2>
+        <p class="rechenweg">Trag deine Fahrleistung im Jahr und zu beiden Angeboten Laufzeit und Laufleistung ein – das Ergebnis erscheint sofort.</p>
+      </section>
+    </form>
+
+    <aside class="appkasten" aria-label="Kilometerkompass">
+      <img class="symbol" src="bilder/symbol.png" width="256" height="256" alt="" />
+      <div>
+        <p class="appkasten-titel">Deine echte Fahrleistung kennen, statt zu schätzen?</p>
+        <p>Kilometerkompass für das iPhone rechnet sie aus deinen Kilometerständen aus und belegt diesen Vergleich mit den Sätzen und Freigrenzen deines jetzigen Vertrags vor. Aus dem gewählten Angebot wird mit einem Tipp der neue Vertrag. Sieben Tage kostenlos testen, danach einmalig <span data-chf="CHF&#160;5.00">4,99&#160;€</span>.</p>
+        <p class="laden">
+          <a class="app-store" href="https://apps.apple.com/de/app/kilometerkompass/id6815973549" data-chf-href="https://apps.apple.com/ch/app/kilometerkompass/id6815973549">
+            <picture>
+              <source srcset="bilder/app-store-weiss.svg" media="(prefers-color-scheme: dark)" />
+              <img src="bilder/app-store-schwarz.svg" width="162" height="54" alt="Laden im App Store" />
+            </picture>
+          </a>
+        </p>
+        <p><a href="index.html">Mehr zur App</a></p>
+      </div>
+    </aside>
+
+    <h2>So rechnet der Rechner</h2>
+    <h3>Vereinbart und erwartet</h3>
+    <p>Die Laufleistung im Jahr wird auf die Laufzeit umgerechnet: 10.000&#160;km im Jahr über 36&#160;Monate sind 30.000&#160;km. Genauso deine Fahrleistung: Wer 13.400&#160;km im Jahr fährt, kommt in 36&#160;Monaten auf 40.200&#160;km. Die Differenz sind deine voraussichtlichen Mehr- oder Minderkilometer.</p>
+
+    <h3>Die Abrechnung am Ende</h3>
+    <p>Innerhalb der Freigrenze wird nichts abgerechnet. Darüber kosten Mehrkilometer den vereinbarten Satz, Minderkilometer bringen den – meist niedrigeren – Satz zurück, oft nur bis zu einer Obergrenze. Im Beispiel mit 2.500&#160;km Freigrenze und 0,12&#160;€ je Mehrkilometer werden beim kleinen Angebot 7.700&#160;km abgerechnet: 924&#160;€ Nachzahlung. Mehr dazu in <a href="mehrkilometer.html">Mehrkilometer beim Leasing</a> und <a href="minderkilometer.html">Minderkilometer und Freigrenze</a>.</p>
+
+    <h3>Der Vergleich</h3>
+    <p>Gesamtkosten sind die Monatsrate mal die Laufzeit, dazu Anzahlung, Überführung und Zulassung und die Wartung, plus Nachzahlung oder minus Vergütung. Ein Servicepaket zählt jeden Monat der Laufzeit. Bezahlst du jede Inspektion einzeln, zählt sie so oft, wie ihr Abstand in die Laufzeit passt: bei 36&#160;Monaten und jährlicher Inspektion dreimal, alle zwei Jahre einmal. Bei gleicher Laufzeit gewinnt das Angebot mit den geringeren Gesamtkosten. Sind die Laufzeiten verschieden, wäre das unfair – vier Jahre kosten mehr als drei –, deshalb zählt dann, was ein Monat kostet.</p>
+    <p>Ohne Monatsraten zeigt der Rechner nur die Kilometerabrechnung und nennt keinen Sieger: Dort schneidet die größere Laufleistung immer besser ab, obwohl sie über die Rate mehr kostet.</p>
+
+    <h3>Welche Laufleistung passt?</h3>
+    <p>Leasinggeber bieten die Laufleistung meist in Stufen von 5.000&#160;km im Jahr an. Der Rechner nennt die Stufe, die deine Fahrleistung abdeckt. Die Stufe darunter ist oft trotzdem eine Überlegung wert: Mehrkilometer sind nicht automatisch teurer als die höhere Rate – genau das rechnet der Vergleich aus. Wie du deine Fahrleistung ermittelst und wann sich welche Stufe lohnt, steht im Ratgeber <a href="laufleistung.html">Welche Laufleistung beim Leasing?</a></p>
+
+    <h3>Was nicht eingerechnet ist</h3>
+    <p>Versicherung, Steuer und Energie. Sie sind bei zwei Angeboten für dasselbe Auto meist gleich und ändern am Ergebnis nichts; unterscheiden sie sich, rechne sie selbst dazu. Gelten für die beiden Angebote verschiedene Sätze oder Freigrenzen, rechne den Vergleich zweimal – oder nimm die App, dort trägst du sie je Angebot ein.</p>
+
+    <p class="stand">Alle Angaben ohne Gewähr. Maßgeblich sind immer das Angebot und die Abrechnung deines Leasinggebers.</p>
+
+    <ul class="weiterlesen">
+      <li><a href="laufleistung.html">Welche Laufleistung beim Leasing?</a> – Fahrleistung ermitteln und die passende Stufe wählen</li>
+      <li><a href="rechner.html">Leasing-Kilometer-Rechner</a> – wo du im laufenden Vertrag stehst</li>
+      <li><a href="mehrkilometer.html">Mehrkilometer beim Leasing</a> – was sie kosten und wie du gegensteuerst</li>
+      <li><a href="leasingrueckgabe.html">Leasingrückgabe</a> – die Kilometer im Blick behalten</li>
+    </ul>
+
+  </div>
+</main>
+
+<footer class="fusszeile">
+  <div class="spalte">
+    <nav aria-label="Ratgeber">
+      <ul>
+        <li><a href="index.html">Kilometerkompass</a></li>
+        <li><a href="rechner.html">Kilometer-Rechner</a></li>
+        <li><a href="kilometer-check-jahresende.html">Kilometer-Check zum Jahresende</a></li>
+        <li><a href="angebotsvergleich.html" aria-current="page">Angebote vergleichen</a></li>
+        <li><a href="laufleistung.html">Welche Laufleistung?</a></li>
+        <li><a href="e-auto-leasing-kilometer.html">E-Auto-Leasing</a></li>
+        <li><a href="mehrkilometer.html">Mehrkilometer</a></li>
+        <li><a href="kilometer-anpassen.html">Kilometer anpassen</a></li>
+        <li><a href="minderkilometer.html">Minderkilometer und Freigrenze</a></li>
+        <li><a href="leasing-vorzeitig-beenden.html">Vorzeitig beenden</a></li>
+        <li><a href="leasingrueckgabe.html">Leasingrückgabe</a></li>
+      </ul>
+    </nav>
+    <nav aria-label="Rechtliches">
+      <ul>
+        <li><a href="presse.html">Presse</a></li>
+        <li><a href="datenschutz.html">Datenschutz</a></li>
+        <li><a href="impressum.html">Impressum</a></li>
+      </ul>
+    </nav>
+    <p>Apple, das Apple-Logo, iPhone, iCloud, Face&#160;ID, Touch&#160;ID, Siri und App Store sind Marken der Apple Inc., eingetragen in den USA und weiteren Ländern und Regionen.</p>
+  </div>
+</footer>
+
+</body>
+</html>
